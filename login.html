@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogIn or SignUp</title>
+    <!-- =========================== iconify cdn
+     =============================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iconify/2.0.0/iconify.min.js"
+        integrity="sha512-lYMiwcB608+RcqJmP93CMe7b4i9G9QK1RbixsNu4PzMRJMsqr/bUrkXUuFzCNsRUo3IXNUr5hz98lINURv5CNA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- =========================== 
+     Google font
+    =============================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <!-- =========================== 
+     Favicon
+    =============================== -->
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+    <!-- =========================== 
+     Tailwind Css
+    =============================== -->
+    <link rel="stylesheet" href="./src/output.css">
+    <!-- =========================== 
+     Custom Css
+    =============================== -->
+    <link rel="stylesheet" href="./src/style.css">
+
+</head>
+
+<body>
+    <header id="header-section">
+        <div class="top_header bg-[#272343] py-[14px]">
+            <div class="box flex flex-col gap-3 md:flex-row md:gap-0 justify-between items-center">
+                <div class="leftSide flex items-center gap-2 text-[#E5E5E5]">
+                    <span class="iconify" data-icon="tabler:check"></span>
+                    <p class="">Free shipping on all orders over $50</p>
+                </div>
+                <div class="rightSide flex items-center gap-6  text-[#E5E5E5]">
+                    <div class="lang flex items-center gap-[6px]">
+                        <p>Eng </p>
+                        <span class="iconify mt-2 cursor-pointer text-[#E5E5E5]" data-icon="tabler:chevron-down"></span>
+                    </div>
+                    <p><a href="#">Faqs</a></p>
+                    <div class="help flex items-center gap-[6px]">
+                        <span class="iconify mt-1 text-[#E5E5E5]" data-icon="tabler:alert-circle"></span>
+                        <p><a href="#">Need Help</a></p>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+        <div class="logo_search bg-[#F0F2F3]">
+            <div class="box py-5 flex justify-between items-center flex-col gap-3 md:flex-row ">
+                <div class="logo">
+                    <img class="w-[140px] h-10px" src="./img/main_logo.png" alt="">
+                </div>
+                <div class="search md:w-[415px] w-[90%]  bg-white rounded-md relative">
+                    <form action="">
+                        <input class="px-5 py-2 w-[90%] outline-none rounded-md" type="text" placeholder="Search here...">
+                        <input class=" bg-[url('/img/search.png')] bg-cover bg-center h-auto md:w-[6%] w-[6%] absolute top-2 right-1
+                            z-50 cursor-pointer" type="submit" value="">
+                    </form>
+                </div>
+                <div class="icons flex items-center gap-3">
+                    <div class="carts bg-white px-4 py-3 flex items-center gap-3 rounded-[8px] cursor-pointer">
+                        <span class="iconify text-[24px] text-[#007580]" data-icon="mdi:cart-outline"></span>
+                        <p class="text-[16px font-semibold">Cart</p>
+                        <div class="count w-5 h-5 rounded-full bg-[#007580] text-white text-center text-[14px]">2</div>
+                    </div>
+                    <div title="Favourite"
+                        class="heart bg-white w-11 h-11 rounded-[8px] flex justify-center items-center cursor-pointer">
+                        <span class="iconify w-[22px] h-[22px]" data-icon="mdi:heart-outline"></span>
+                    </div>
+                    <div title="Group"
+                        class="group bg-white w-11 h-11 rounded-[8px] flex justify-center items-center cursor-pointer">
+                        <span class="iconify w-[22px] h-[22px]" data-icon="ic:baseline-perm-identity"></span>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+        <div class="menu bg-white">
+            <div class="box py-[14px] flex justify-between items-center">
+                <div class="leftSide flex items-center gap-5">
+                    <div
+                        class="category flex gap-4 items-center px-5 py-3 border border-[#E1E3E5] rounded-md text-[#272343]">
+                        <span class="iconify md:text-[20px] text-[24px] cursor-pointer" data-icon="mdi-menu"></span>
+                        <p class="font-semibold text-nowrap cursor-context-menu">All Categories</p>
+    
+                    </div>
+    
+                    <div id="list" class=" md:flex relative ">
+                        <ul id="ulList"
+                            class="hidden md:flex md:space-y-0 space-y-3 flex-col md:flex-row gap-2 items-center md:gap-5 text-[14px] md:text-[#636270] absolute top-5 left-32 bg-[#007580] rounded-md md:bg-white text-white px-10 py-1 md:relative md:left-0 md:top-0 md:px-0 md:py-0">
+    
+                            <li><a class="md:hover:text-[#007580] transition font-semibold" href="#">Home</a></li>
+                            <li><a class="md:hover:text-[#007580] transition font-semibold" href="#">Shop</a></li>
+                            <li><a class="md:hover:text-[#007580] transition font-semibold" href="#">Product</a></li>
+                            <li><a class="md:hover:text-[#007580] transition font-semibold" href="#">Pages</a></li>
+                            <li><a class="md:hover:text-[#007580] transition font-semibold" href="#">About</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="rightSide gap-1 text-[14px] hidden md:flex">
+                    <p class="text-[#636270]">Contact :</p>
+                    <p class="text-black">(808) 555-0111</p>
+                </div>
+                <span onclick="toogle()" id="menuBtn"
+                    class="iconify text-[32px] relative right-0 cursor-pointer bg-[#007580] rounded-sm p-1 text-white md:hidden"
+                    data-icon="mdi:menu"></span>
+            </div>
+        </div>
+    </header>
+    
+    <section id="pathBox" class="bg-[#F0F2F3]">
+        <div class="box py-6">
+            <div class="path">
+                <ul class="flex items-center gap-1 text-[#636270]"> 
+                    <li><a href="#">Home</a></li>
+                    <li><span class="iconify pt-1" data-icon="tabler:chevron-right"></span></li>
+                    <li><a href="#">Account</a></li>
+                    <li><span class="iconify pt-1" data-icon="tabler:chevron-right"></span></li>
+                    <li class="text-[#272343]"><a href="#">Sign Up</a></li>
+                </ul>
+            </div>
+            <div class="text mt-3">
+                <h1 class="font-semibold text-[24px] text-[#272343]">Sign In</h1>
+            </div>
+        </div>
+    </section>
+
+    <section id="loginBox" class="mb-10">
+        <div class="box flex justify-center items-center pt-[50px] md:w-[650px] w-[90%] h-auto ">
+            <div class="loginCard bg-white md:max-w-[45%]  mx-auto shadow-md shadow-[#9A9CAA] rounded-xl px-10 pt-10 pb-3">
+                <h1 class="text-center font-semibold text-[32px] text-[#272343] mb-5">Sign In</h1>
+
+                <form class="relative" action="">
+                    <input class="w-full mb-4 bg-[#F0F2F3] px-5 py-3 outline-none rounded-lg" type="text" placeholder="Email">
+                    <input class="w-full mb-4 bg-[#F0F2F3] px-5 py-3 outline-none rounded-lg" type="password" placeholder="Password">
+                    <div class="seePass absolute right-2 bottom-8 cursor-pointer">
+                        <span class="iconify" data-icon="mdi:eye-off"></span>
+                    </div>
+                </form>
+                
+                
+                <div class="forgetPass flex justify-between mb-5">
+                    <div class="Leftside flex gap-3">
+                        <input class="cursor-pointer w-5 h-5 rounded-lg" type="checkbox">
+                        <h3 class="text-[#636270] font-dmSans">Remember Me</h3>
+                    </div>
+                    <div class="RightSide">
+                        <a class="text-[#007580] font-dmSans font-medium text-[14px]" href="#">Forget Password</a>
+                    </div>
+                </div>
+
+                <button
+                    class="bg-[#029FAE] px-6 py-3 flex font-bold text-white md:mt-2 mt-3 rounded-[8px] hover:shadow-sm hover:shadow-gray-500 transition-all delay-50 w-full items-center justify-center mb-5">Sign In
+                    <span class="iconify ml-3 pt-1 text-[20px] " data-icon="mdi:arrow-right"></span> </button>
+
+                <p class="text-[#272343] text-center">Don't have account? <a class="text-[#007580] font-medium" href="#">Sign Up</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer" class="border-y border-y-gray-400">
+        <div class="box">
+            <div class="top-footer grid grid-cols-1 md:grid-cols-4 gap-8 py-16 ">
+                <div class="logo_social space-y-6">
+                    <img src="./img/main_logo.png" alt="">
+                    <p class="text-[#272343] opacity-60">Vivamus tristique odio sit amet velit semper, eu posuere turpis
+                        interdum.
+                        Cras egestas purus</p>
+                    <ul class="flex items-center gap-4 text-[#636270]">
+                        <li
+                            class="cursor-pointer hover:border-2 hover:border-[#007580] rounded-full p-1 transition delay-75">
+                            <span class="iconify text-[24px]" data-icon="mdi:facebook"></span></li>
+                        <li
+                            class="cursor-pointer hover:border-2 hover:border-[#007580] rounded-full p-1 transition delay-75">
+                            <span class="iconify text-[24px]" data-icon="mdi:twitter"></span></li>
+                        <li
+                            class="cursor-pointer hover:border-2 hover:border-[#007580] rounded-full p-1 transition delay-75">
+                            <span class="iconify text-[24px]" data-icon="mdi:instagram"></span></li>
+                        <li
+                            class="cursor-pointer hover:border-2 hover:border-[#007580] rounded-full p-1 transition delay-75">
+                            <span class="iconify text-[24px]" data-icon="mdi:pinterest"></span></li>
+                        <li
+                            class="cursor-pointer hover:border-2 hover:border-[#007580] rounded-full p-1 transition delay-75">
+                            <span class="iconify text-[24px]" data-icon="mdi:youtube"></span></li>
+                    </ul>
+                </div>
+                <div class="category ">
+                    <ul class="space-y-5 text-[#272343]">
+                        <li class="cursor-not-allowed text-[#9A9CAA] font-medium uppercase mb-7">Category</li>
+                        <li><a class="hover:text-[#007580] hover:underline" href="#">Sofa</a></li>
+                        <li><a class="hover:text-[#007580] hover:underline" href="#">Arm Chair</a></li>
+                        <li><a class="hover:text-[#007580] hover:underline" href="#">Wing Chair</a></li>
+                        <li><a class="hover:text-[#007580] hover:underline" href="#">Desk Chair</a></li>
+                        <li><a class="hover:text-[#007580] hover:underline" href="#">Wooden Chair</a></li>
+                        <li><a class="hover:text-[#007580] hover:underline" href="#">Park Bench</a></li>
+                    </ul>
+                </div>
+                <div class="support">
+                    <ul class="space-y-5 text-[#272343]">
+                        <li class="cursor-not-allowed text-[#9A9CAA] font-medium uppercase mb-7">Support</li>
+                        <li><a class="hover:text-[#007580] hover:underline" href="#">Help & Support</a></li>
+                        <li><a class="hover:text-[#007580] hover:underline" href="#">Terms & Conditions</a></li>
+                        <li><a class="hover:text-[#007580] hover:underline" href="#">Privacy Policy</a></li>
+                        <li><a class="hover:text-[#007580] hover:underline" href="#">Help</a></li>
+                    </ul>
+                </div>
+                <div class="newsletter">
+                    <h3 class="cursor-not-allowed text-[#9A9CAA] font-medium uppercase md:mb-7 ">Newsletter</h3>
+                    <form action="">
+                        <input class="w-[285px] p-3 rounded-lg outline-none border-2 border-gray-300" type="text"
+                            placeholder="Your Email">
+                        <input
+                            class="px-6 py-[14px] bg-[#029FAE] rounded-lg font-semibold text-white hover:shadow-md hover:shadow-gray-400 mt-5 mb-5 cursor-pointer"
+                            type="submit" value="Subscribe">
+                    </form>
+                    <p class="text-[#272343] opacity-60">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+                        tincidunt erat enim.</p>
+                </div>
+            </div>
+            <div class="end-footer flex justify-between items-center border-t border-t-gray-400 py-6">
+                <h3 class="text-[#9A9CAA]">@ 2021 - Blogy - Designed & Develop by <span
+                        class="text-[#272343]">DevMohim</span></h3>
+                <img class="opacity-20" src="./img/card.png" alt="">
+    
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="./src/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+
+/* =================================
+    Custom Css
+    ================================ */
+
+.box{
+max-width: 1440px;
+width: 93%;
+margin: 0 auto;
+}
+
+/* img{
+    max-width: 100%;
+    height: auto;
+} */
+
+.cart{
+width: 40px;
+height: 40px;
+border-radius: 6px;
+cursor: pointer ;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: 0.75s;
+background: #F0F2F3 ;
+color: #272343;
+}
+.cart:hover{
+background: #029FAE ;
+color: white;
+}
+
+.name-price h3{
+transition: 0.15s;
+cursor: pointer;
+}
+.name-price h3:hover{
+color: #029FAE;
+}
