@@ -33,8 +33,9 @@
 
 </head>
 
-<body class="relative" >
-    <header id="header-section" class="sticky top-0 z-50" >
+<body class="relative">
+
+    <header id="header-section">
         <div class="top_header bg-[#272343] py-[14px]">
             <div class="box flex flex-col gap-3 md:flex-row md:gap-0 justify-between items-center">
                 <div class="leftSide flex items-center gap-2 text-[#E5E5E5]">
@@ -55,25 +56,27 @@
             </div>
 
         </div>
-        <div >
+        <div>
             <div class="logo_search bg-[#F0F2F3]">
                 <div class="box py-5 flex justify-between items-center flex-col gap-3 md:flex-row ">
                     <div class="logo">
-                        <img class="w-[140px] h-10px" src="./img/main_logo.png" alt="">
+                        <img class="w-[140px] h-10px" src="./img/main_logo.png">
                     </div>
                     <div class="search md:w-[415px] w-[90%]  bg-white rounded-md relative">
                         <form action="">
-                            <input class="px-5 py-2 w-[90%] outline-none rounded-md" type="text" placeholder="Search here...">
+                            <input class="px-5 py-2 w-[90%] outline-none rounded-md" type="text"
+                                placeholder="Search here...">
                             <input class=" bg-[url('/img/search.png')] bg-cover bg-center h-auto md:w-[6%] w-[6%] absolute top-2 right-1
-                                    z-50 cursor-pointer" type="submit" value="">
+                                    cursor-pointer" type="submit" value="">
                         </form>
                     </div>
                     <div class="icons flex items-center gap-3">
                         <div class="carts bg-white px-4 py-3 flex items-center gap-3 rounded-[8px] cursor-pointer">
-                            <span id="carts" onclick="toogleCarts()" class="iconify text-[24px] text-[#007580]"
+                            <span id="carts" class="iconify text-[24px] text-[#007580]"
                                 data-icon="mdi:cart-outline"></span>
-                            <p class="text-[16px font-semibold">Cart</p>
-                            <div class="count w-5 h-5 rounded-full bg-[#007580] text-white text-center text-[14px]">2</div>
+                            <div
+                                class="cartQuantity w-5 h-5 rounded-full bg-[#007580] text-white text-center text-[14px]">
+                            </div>
                         </div>
                         <div title="Favourite"
                             class="heart bg-white w-11 h-11 rounded-[8px] flex justify-center items-center cursor-pointer">
@@ -85,21 +88,22 @@
                         </div>
                     </div>
                 </div>
-            
+
             </div>
             <div class="menu bg-white">
                 <div class="box py-[14px] flex justify-between items-center">
                     <div class="leftSide flex items-center gap-5">
-                        <div class="category flex gap-4 items-center px-5 py-3 border border-[#E1E3E5] rounded-md text-[#272343]">
+                        <div
+                            class="category flex gap-4 items-center px-5 py-3 border border-[#E1E3E5] rounded-md text-[#272343]">
                             <span class="iconify md:text-[20px] text-[24px] cursor-pointer" data-icon="mdi-menu"></span>
                             <p class="font-semibold text-nowrap cursor-context-menu">All Categories</p>
-            
+
                         </div>
-            
-                        <div id="list" class=" md:flex">
+
+                        <div class=" md:flex ">
                             <ul id="ulList"
-                                class="text-center hidden space-y-3 flex-col gap-2 items-center text-[14px] text-white absolute top-[350px] w-[90%] px-10 right-6 py-1 bg-[#007580] rounded-md md:flex md:flex-row md:gap-5 md:bg-white md:text-[#636270] md:relative md:left-0 md:top-0 md:px-0 md:py-0 md:space-y-0">
-            
+                                class=" hidden text-center  space-y-3 flex-col gap-2 items-center text-[14px] text-white absolute top-[350px] w-[90%] px-10 right-6 py-1 bg-[#007580] rounded-md md:flex md:flex-row md:gap-5 md:bg-white md:text-[#636270] md:relative md:left-0 md:top-0 md:px-0 md:py-0 md:space-y-0">
+
                                 <li><a class="md:hover:text-[#007580] transition font-semibold hover:border-b-2 hover:border-b-white"
                                         href="#">Home</a></li>
                                 <li><a class="md:hover:text-[#007580] transition font-semibold hover:border-b-2 hover:border-b-white"
@@ -117,21 +121,53 @@
                         <p class="text-[#636270]">Contact :</p>
                         <p class="text-black">(808) 555-0111</p>
                     </div>
-                    <span onclick="toogle()" id="menuBtn"
+                    <span onclick="toggleMenu()" id="menuBtn"
                         class="iconify text-[32px] relative right-0 cursor-pointer bg-[#007580] rounded-sm p-1 text-white md:hidden"
                         data-icon="mdi:menu"></span>
-            
+
                 </div>
             </div>
         </div>
     </header>
 
+    <div id="sideCart"
+        class="w-[50px]   bg-[#007580] text-white font-semibold  p-3 rounded-md flex justify-center items-center flex-col gap-2 cursor-pointer fixed md:top-56 right-0 z-50">
+        <h1>Cart</h1>
+        <span class="iconify text-[30px]" data-icon="mdi-cart-outline"></span>
+        <h4 class="absolute top-9 right-1 bg-red-700 w-5 h-5 flex justify-center items-center rounded-full"></h4>
 
-    <div id="cartBox"  class="hidden bg-[#272343] text-white md:right-5  px-3 py-4 rounded-md sticky  z-50 top-0 md:fixed md:top-32 w-[450px]">
-        <h2 class="text-center font-bold  text-[22px]">Your Cart</h2>
-        <ul id="cartList" class="font-semibold  text-[20px]"></ul>
-        <h3 class="font-semibold text-[20px]">Total: $ <span id="totalPrice"></span></h3>
     </div>
+
+    <div id="overlay" class="fixed inset-0 bg-black/30 backdrop-blur-sm hidden z-20">
+
+    </div>
+
+<div id="cartPage" class="hidden fixed inset-y-0 right-0 w-[500px] max-w-full bg-[#007580] z-50  flex-col">
+
+<!-- Header -->
+<div class="p-3 shrink-0">
+    <div class="heading flex items-center justify-center">
+        <span class="p-2 text-center bg-[#ddd] w-3/4 font-semibold text-[#007085] rounded-md">
+            Shopping Cart
+        </span>
+        <span id="closeCart"
+            class="w-1/4 ml-[2%] p-2 text-center bg-[#ddd] font-semibold text-[#007085] rounded-md cursor-pointer">
+            Close
+        </span>
+    </div>
+</div>
+
+<!-- Scroll Area (IMPORTANT PART) -->
+<div class="box flex-1 min-h-0 overflow-y-auto p-3">
+    <!-- JS items যাবে এখানে -->
+</div>
+
+<!-- Footer -->
+<div class="total p-3 shrink-0 bg-[#007580]">
+    <hr>
+    <h1 class="text-white font-semibold mt-1"></h1>
+</div>
+</div>
 
     <section id="hero">
         <div
@@ -147,7 +183,8 @@
                 <button
                     class="bg-[#029FAE] px-6 py-3 flex font-bold text-white md:mt-10 mt-6 rounded-[8px] hover:scale-110 hover:shadow-md hover:shadow-gray-500 transition-all delay-50">Shop
                     Now
-                    <span class="iconify ml-[20px]  text-[25px]" data-icon="mdi:arrow-right"></span> </button>
+                    <span class="iconify ml-[20px]  text-[25px]" data-icon="mdi:arrow-right"></span>
+                </button>
 
 
 
@@ -156,7 +193,7 @@
 
     </section>
 
-    <div id="feature" class="flex flex-col gap-5 relative bottom-10 z-40 mb-8">
+    <div id="feature" class="flex flex-col gap-5 relative bottom-10  mb-8">
         <div
             class="feature box bg-white px-[50px] py-[20px] rounded-xl grid grid-cols-2 md:grid-cols-4 items-center gap-x-5 gap-y-8  shadow-md shadow-gray-300 ">
             <div class="discount flex gap-4 items-center">
@@ -182,7 +219,8 @@
                     <img class="w-[50px]" src="./img/24-hours.png" alt="">
                 </div>
                 <div class="text">
-                    <h3 class="text-[18px] font-semibold text-[#272343] mb-[6px]">Great Support 24/7</h3>
+                    <h3 class="text-[18px] font-semibold text-[#272343] mb-[6px]">Great Support 24/7
+                    </h3>
                     <p class="text-[15px] text-[#9A9CAA]">We care your experiences</p>
                 </div>
             </div>
@@ -212,7 +250,8 @@
     <section id="product_card" class="mb-20">
         <div class="box">
             <div class="title mb-10 flex justify-center md:justify-between items-center">
-                <h2 class="font-semibold md:text-[32px]  text-[24px] text-[#272343]">Featured Products</h2>
+                <h2 class="font-semibold md:text-[32px]  text-[24px] text-[#272343]">Featured Products
+                </h2>
                 <div class="arrow md:flex gap-5 items-center hidden">
                     <div
                         class="left-arrow w-11 h-11 flex justify-center items-center rounded-full bg-[#F0F2F3] hover:bg-[#007580] hover:text-white cursor-pointer transition delay-75">
@@ -225,28 +264,25 @@
                 </div>
             </div>
             <div class="cards flex flex-col md:flex-row justify-center items-center gap-5">
-                <div class="card1 w-[310px]">
-                    <div class="img">
-                        <img class="w-full" src="./img/image1.png" alt="">
-                    </div>
+                <div class=" card card1 w-[310px]">
+                    <img class="w-full" src="./img/image1.png" alt="">
                     <div class="info mt-[14px] flex justify-between items-center">
                         <div class="name-price">
-                            <h3><a class="hover:text-[#007580] transition" href="#"></a>Library Stool Chair</h3>
+                            <h3><a class="hover:text-[#007580] transition" href="#">ID-01 Library Stool
+                            Chair</a></h3>
                             <h4 class="font-semibold text-[18px]">$20</h4>
                         </div>
-                        <div class="cart" data-name="Library Stool Chair" data-price="20">
+                        <div class="cart">
                             <span class="iconify text-[20px]" data-icon="mdi:cart-outline"></span>
                         </div>
 
                     </div>
                 </div>
-                <div class="card2 w-[310px]">
-                    <div class="img">
-                        <img class="w-full" src="./img/image2.png" alt="">
-                    </div>
+                <div class="card card2 w-[310px]">
+                    <img class="w-full" src="./img/image2.png" alt="">
                     <div class="info mt-[14px] flex justify-between items-center">
                         <div class="name-price">
-                            <h3><a href="#"></a>Desk Chair</h3>
+                            <h3><a href="#"></a>ID-02 Desk Chair</h3>
                             <h4 class="font-semibold text-[18px]">$20</h4>
                         </div>
                         <div class="cart" data-name="Desk Chair" data-price="20">
@@ -255,13 +291,11 @@
 
                     </div>
                 </div>
-                <div class="card3 w-[310px]">
-                    <div class="img">
-                        <img class="w-full" src="./img/image3.png" alt="">
-                    </div>
+                <div class="card card3 w-[310px]">
+                    <img class="w-full" src="./img/image3.png" alt="">
                     <div class="info mt-[14px] flex justify-between items-center">
                         <div class="name-price">
-                            <h3><a href="#"></a>Library Stool Chair</h3>
+                            <h3><a href="#"></a>ID-03 Library Stool Chair</h3>
                             <h4 class="font-semibold text-[18px]">$20</h4>
                         </div>
                         <div class="cart" data-name="Library Stool Chair" data-price="20">
@@ -270,13 +304,11 @@
 
                     </div>
                 </div>
-                <div class="card4 w-[310px]">
-                    <div class="img">
-                        <img class="w-full" src="./img/image4.png" alt="">
-                    </div>
+                <div class="card card4 w-[310px]">
+                    <img class="w-full" src="./img/image4.png" alt="">
                     <div class="info mt-[14px] flex justify-between items-center">
                         <div class="name-price">
-                            <h3><a href="#"></a>Library Stool Chair</h3>
+                            <h3><a href="#"></a>ID-04 Library Stool Chair</h3>
                             <h4 class="font-semibold text-[18px]">$20</h4>
                         </div>
                         <div class="cart" data-name="Library Stool Chair" data-price="20">
@@ -311,7 +343,8 @@
                         <img src="./img/image6.png" alt="">
                     </div>
                     <div class="img-info w-full p-5 bg-black opacity-70 absolute bottom-0 rounded-b-2xl text-white ">
-                        <h1 class="font-semibold text-[20px] opacity-100 mb-2"><a href="#">Wing Chair</a></h1>
+                        <h1 class="font-semibold text-[20px] opacity-100 mb-2"><a href="#">Wing
+                                Chair</a></h1>
                         <h4 class="text[#E5E5E5]">3584 Products</h4>
                     </div>
                 </div>
@@ -320,7 +353,8 @@
                         <img src="./img/image7.png" alt="">
                     </div>
                     <div class="img-info w-full p-5 bg-black opacity-70 absolute bottom-0 rounded-b-2xl text-white ">
-                        <h1 class="font-semibold text-[20px] opacity-100 mb-2"><a href="">Wooden Chair</a></h1>
+                        <h1 class="font-semibold text-[20px] opacity-100 mb-2"><a href="">Wooden
+                                Chair</a></h1>
                         <h4 class="text[#E5E5E5]">157 Products</h4>
                     </div>
                 </div>
@@ -329,7 +363,8 @@
                         <img src="./img/image8.png" alt="">
                     </div>
                     <div class="img-info w-full p-5 bg-black opacity-70 absolute bottom-0 rounded-b-2xl text-white ">
-                        <h1 class="font-semibold text-[20px] opacity-100 mb-2"><a href="">Desk Chair</a></h1>
+                        <h1 class="font-semibold text-[20px] opacity-100 mb-2"><a href="">Desk Chair</a>
+                        </h1>
                         <h4 class="text[#E5E5E5]">154 Products</h4>
                     </div>
                 </div>
@@ -344,29 +379,33 @@
             <ul class="font-dmSans  flex gap-2 justify-center">
                 <li
                     class="p-2 text-[#9A9CAA] hover:text-[#272343]  hover:border-b-2 hover:border-b-[#038053] transition delay-75">
-                    <a href="#">ALL</a></li>
+                    <a href="#">ALL</a>
+                </li>
                 <li
                     class="p-2 text-[#9A9CAA] hover:text-[#272343]  hover:border-b-2 hover:border-b-[#038053] transition delay-75">
-                    <a href="#">NEWEST</a></li>
+                    <a href="#">NEWEST</a>
+                </li>
                 <li
                     class="p-2 text-[#9A9CAA] hover:text-[#272343]  hover:border-b-2 hover:border-b-[#038053] transition delay-75">
-                    <a href="#">TRANDING</a></li>
+                    <a href="#">TRANDING</a>
+                </li>
                 <li
                     class="p-2 text-[#9A9CAA] hover:text-[#272343]  hover:border-b-2 hover:border-b-[#038053] transition delay-75">
-                    <a href="#">BEST SELLERS</a></li>
+                    <a href="#">BEST SELLERS</a>
+                </li>
                 <li
                     class="p-2 text-[#9A9CAA] hover:text-[#272343]  hover:border-b-2 hover:border-b-[#038053] transition delay-75">
-                    <a href="#">FEATURED</a></li>
+                    <a href="#">FEATURED</a>
+                </li>
             </ul>
             <div style="margin-bottom: 40px; margin-top: 20px;" class="box ">
                 <div class="cards flex flex-col md:flex-row justify-center items-center gap-5 mt-3">
-                    <div class="card1 w-[310px]">
-                        <div class="img">
-                            <img class="w-full" src="./img/image1.png" alt="">
-                        </div>
+                    <div class="card card1 w-[310px]">
+                        <img class="w-full" src="./img/image1.png" alt="">
                         <div class="info mt-[14px] flex justify-between items-center">
                             <div class="name-price">
-                                <h3><a class="hover:text-[#007580] transition" href="#"></a>Library Stool Chair</h3>
+                                <h3><a class="hover:text-[#007580] transition" href="#"></a> ID-05 Library
+                                    Stool Chair</h3>
                                 <h4 class="font-semibold text-[18px]">$20</h4>
                             </div>
                             <div class="cart" data-name="Library Stool Chair" data-price="20">
@@ -375,13 +414,13 @@
 
                         </div>
                     </div>
-                    <div class="card2 w-[310px]">
-                        <div class="img">
-                            <img class="w-full" src="./img/image2.png" alt="">
-                        </div>
+                    <div class="card card2 w-[310px]">
+
+                        <img class="w-full" src="./img/image2.png" alt="">
+
                         <div class="info mt-[14px] flex justify-between items-center">
                             <div class="name-price">
-                                <h3><a href="#"></a>Library Stool Chair</h3>
+                                <h3><a href="#"></a>ID-06 Library Stool Chair</h3>
                                 <h4 class="font-semibold text-[18px]">$20</h4>
                             </div>
                             <div class="cart" data-name="Library Stool Chair" data-price="20">
@@ -390,13 +429,13 @@
 
                         </div>
                     </div>
-                    <div class="card3 w-[310px]">
-                        <div class="img">
-                            <img class="w-full" src="./img/image3.png" alt="">
-                        </div>
+                    <div class="card card3 w-[310px]">
+
+                        <img class="w-full" src="./img/image3.png" alt="">
+
                         <div class="info mt-[14px] flex justify-between items-center">
                             <div class="name-price">
-                                <h3><a href="#"></a>Library Stool Chair</h3>
+                                <h3><a href="#"></a> ID-07 Library Stool Chair</h3>
                                 <h4 class="font-semibold text-[18px]">$20</h4>
                             </div>
                             <div class="cart" data-name="Library Stool Chair" data-price="20">
@@ -405,13 +444,11 @@
 
                         </div>
                     </div>
-                    <div class="card4 w-[310px]">
-                        <div class="img">
-                            <img class="w-full" src="./img/image4.png" alt="">
-                        </div>
+                    <div class="card card4 w-[310px]">
+                        <img class="w-full" src="./img/image4.png" alt="">
                         <div class="info mt-[14px] flex justify-between items-center">
                             <div class="name-price">
-                                <h3><a href="#"></a>Library Stool Chair</h3>
+                                <h3><a href="#"></a> ID-08 Library Stool Chair</h3>
                                 <h4 class="font-semibold text-[18px]">$20</h4>
                             </div>
                             <div class="cart" data-name="Library Stool Chair" data-price="20">
@@ -424,13 +461,14 @@
             </div>
             <div class="box">
                 <div class="cards flex flex-col md:flex-row justify-center items-center gap-5 mt-3">
-                    <div class="card1 w-[310px]">
-                        <div class="img">
-                            <img class="w-full" src="./img/image10.png" alt="">
-                        </div>
+                    <div class="card card1 w-[310px]">
+
+                        <img class="w-full" src="./img/image10.png" alt="">
+
                         <div class="info mt-[14px] flex justify-between items-center">
                             <div class="name-price">
-                                <h3><a class="hover:text-[#007580] transition" href="#"></a>Library Stool Chair</h3>
+                                <h3><a class="hover:text-[#007580] transition" href="#"></a>Library
+                                    Stool Chair</h3>
                                 <h4 class="font-semibold text-[18px]">$20</h4>
                             </div>
                             <div class="cart" data-name="Library Stool Chair" data-price="20">
@@ -439,25 +477,8 @@
 
                         </div>
                     </div>
-                    <div class="card2 w-[310px]">
-                        <div class="img">
-                            <img class="w-full" src="./img/image11.png" alt="">
-                        </div>
-                        <div class="info mt-[14px] flex justify-between items-center">
-                            <div class="name-price">
-                                <h3><a href="#"></a>Library Stool Chair</h3>
-                                <h4 class="font-semibold text-[18px]">$20</h4>
-                            </div>
-                            <div class="cart" data-name="Library Stool Chair" data-price="20">
-                                <span class="iconify text-[20px]" data-icon="mdi:cart-outline"></span>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="card3 w-[310px]">
-                        <div class="img">
-                            <img class="w-full" src="./img/image12.png" alt="">
-                        </div>
+                    <div class="card card2 w-[310px]">
+                        <img class="w-full" src="./img/image11.png" alt="">
                         <div class="info mt-[14px] flex justify-between items-center">
                             <div class="name-price">
                                 <h3><a href="#"></a>Library Stool Chair</h3>
@@ -469,10 +490,25 @@
 
                         </div>
                     </div>
-                    <div class="card4 w-[310px]">
-                        <div class="img">
-                            <img class="w-full" src="./img/image13.png" alt="">
+                    <div class="card card3 w-[310px]">
+
+                        <img class="w-full" src="./img/image12.png" alt="">
+
+                        <div class="info mt-[14px] flex justify-between items-center">
+                            <div class="name-price">
+                                <h3><a href="#"></a>Library Stool Chair</h3>
+                                <h4 class="font-semibold text-[18px]">$20</h4>
+                            </div>
+                            <div class="cart" data-name="Library Stool Chair" data-price="20">
+                                <span class="iconify text-[20px]" data-icon="mdi:cart-outline"></span>
+                            </div>
+
                         </div>
+                    </div>
+                    <div class="card card4 w-[310px]">
+
+                        <img class="w-full" src="./img/image13.png" alt="">
+
                         <div class="info mt-[14px] flex justify-between items-center">
                             <div class="name-price">
                                 <h3><a href="#"></a>Library Stool Chair</h3>
@@ -493,7 +529,8 @@
     <section id="review" class="bg-[#E5E5E5] mb-20">
         <div class="box py-20">
             <div class="title mb-8 flex justify-center md:justify-between items-center ">
-                <h2 class="font-semibold md:text-[32px]  text-[24px] text-[#272343]">What client says about us</h2>
+                <h2 class="font-semibold md:text-[32px]  text-[24px] text-[#272343]">What client says
+                    about us</h2>
                 <div class="arrow md:flex gap-5 items-center hidden">
                     <div
                         class="left-arrow w-11 h-11 flex justify-center items-center rounded-full bg-[#F0F2F3] hover:bg-[#007580] hover:text-white cursor-pointer transition delay-75">
@@ -507,10 +544,12 @@
             </div>
             <div class="review flex flex-col md:flex-row justify-between items-center gap-6 ">
                 <div class="review1 p-5 bg-white rounded-xl ">
-                    <p class="ps-6 border-l-2 border-[#029FAE] ">“Lorem ipsum dolor sit amet, consectetur adipiscing
+                    <p class="ps-6 border-l-2 border-[#029FAE] ">“Lorem ipsum dolor sit amet,
+                        consectetur adipiscing
                         elit. Vivamus sit
                         amet mi nec massa tincidunt blandit et eu sem.
-                        Maecenas laoreet ultrices diam dignissim posuere. Aenean ultrices dui at ipsum sagittis,
+                        Maecenas laoreet ultrices diam dignissim posuere. Aenean ultrices dui at ipsum
+                        sagittis,
                         pharetra lacinia dui
                         faucibus.
                         In ac bibendum ex. Aenean dolor massa, euismod sit amet suscipit et“</p>
@@ -523,10 +562,12 @@
                     </div>
                 </div>
                 <div class="review2 p-5 bg-white rounded-xl ">
-                    <p class="ps-6 border-l-2 border-[#029FAE] ">“Lorem ipsum dolor sit amet, consectetur adipiscing
+                    <p class="ps-6 border-l-2 border-[#029FAE] ">“Lorem ipsum dolor sit amet,
+                        consectetur adipiscing
                         elit. Vivamus sit
                         amet mi nec massa tincidunt blandit et eu sem.
-                        Maecenas laoreet ultrices diam dignissim posuere. Aenean ultrices dui at ipsum sagittis,
+                        Maecenas laoreet ultrices diam dignissim posuere. Aenean ultrices dui at ipsum
+                        sagittis,
                         pharetra lacinia dui
                         faucibus.
                         In ac bibendum ex. Aenean dolor massa, euismod sit amet suscipit et“</p>
@@ -559,13 +600,14 @@
                 </div>
             </div>
             <div class="cards flex flex-col md:flex-row justify-center items-center gap-5">
-                <div class="card1 w-[310px]">
-                    <div class="img">
-                        <img class="w-full" src="./img/image1.png" alt="">
-                    </div>
+                <div class="card card1 w-[310px]">
+
+                    <img class="w-full" src="./img/image1.png" alt="">
+
                     <div class="info mt-[14px] flex justify-between items-center">
                         <div class="name-price">
-                            <h3><a class="hover:text-[#007580] transition" href="#"></a>Library Stool Chair</h3>
+                            <h3><a class="hover:text-[#007580] transition" href="#"></a>Library Stool
+                                Chair</h3>
                             <h4 class="font-semibold text-[18px]">$20</h4>
                         </div>
                         <div class="cart" data-name="Library Stool Chair" data-price="20">
@@ -574,10 +616,10 @@
 
                     </div>
                 </div>
-                <div class="card2 w-[310px]">
-                    <div class="img">
-                        <img class="w-full" src="./img/image2.png" alt="">
-                    </div>
+                <div class="card card2 w-[310px]">
+
+                    <img class="w-full" src="./img/image2.png" alt="">
+
                     <div class="info mt-[14px] flex justify-between items-center">
                         <div class="name-price">
                             <h3><a href="#"></a>Library Stool Chair</h3>
@@ -589,10 +631,10 @@
 
                     </div>
                 </div>
-                <div class="card3 w-[310px]">
-                    <div class="img">
-                        <img class="w-full" src="./img/image3.png" alt="">
-                    </div>
+                <div class="card card3 w-[310px]">
+
+                    <img class="w-full" src="./img/image3.png" alt="">
+
                     <div class="info mt-[14px] flex justify-between items-center">
                         <div class="name-price">
                             <h3><a href="#"></a>Library Stool Chair</h3>
@@ -604,16 +646,16 @@
 
                     </div>
                 </div>
-                <div class="card4 w-[310px]">
-                    <div class="img">
-                        <img class="w-full" src="./img/image4.png" alt="">
-                    </div>
+                <div class="card card4 w-[310px]">
+
+                    <img class="w-full" src="./img/image4.png" alt="">
+
                     <div class="info mt-[14px] flex justify-between items-center">
                         <div class="name-price">
                             <h3><a href="#"></a>Library Stool Chair</h3>
                             <h4 class="font-semibold text-[18px]">$20</h4>
                         </div>
-                        <div class="cart" data-name="Library Stool Chair" data-price="20">
+                        <div class="cart">
                             <span class="iconify text-[20px]" data-icon="mdi:cart-outline"></span>
                         </div>
 
@@ -629,47 +671,77 @@
             <div class="top-footer grid grid-cols-1 md:grid-cols-4 gap-8 py-16 ">
                 <div class="logo_social space-y-6">
                     <img src="./img/main_logo.png" alt="">
-                    <p class="text-[#272343] opacity-60">Vivamus tristique odio sit amet velit semper, eu posuere turpis interdum.
+                    <p class="text-[#272343] opacity-60">Vivamus tristique odio sit amet velit semper,
+                        eu posuere turpis
+                        interdum.
                         Cras egestas purus</p>
                     <ul class="flex items-center gap-4 text-[#636270]">
-                        <li class="cursor-pointer hover:border-2 hover:border-[#007580] rounded-full p-1 transition delay-75"><span class="iconify text-[24px]" data-icon="mdi:facebook"></span></li>
-                        <li class="cursor-pointer hover:border-2 hover:border-[#007580] rounded-full p-1 transition delay-75"><span class="iconify text-[24px]" data-icon="mdi:twitter"></span></li>
-                        <li class="cursor-pointer hover:border-2 hover:border-[#007580] rounded-full p-1 transition delay-75"><span class="iconify text-[24px]" data-icon="mdi:instagram"></span></li>
-                        <li class="cursor-pointer hover:border-2 hover:border-[#007580] rounded-full p-1 transition delay-75"><span class="iconify text-[24px]" data-icon="mdi:pinterest"></span></li>
-                        <li class="cursor-pointer hover:border-2 hover:border-[#007580] rounded-full p-1 transition delay-75"><span class="iconify text-[24px]" data-icon="mdi:youtube"></span></li>
+                        <li
+                            class="cursor-pointer hover:border-2 hover:border-[#007580] rounded-full p-1 transition delay-75">
+                            <span class="iconify text-[24px]" data-icon="mdi:facebook"></span>
+                        </li>
+                        <li
+                            class="cursor-pointer hover:border-2 hover:border-[#007580] rounded-full p-1 transition delay-75">
+                            <span class="iconify text-[24px]" data-icon="mdi:twitter"></span>
+                        </li>
+                        <li
+                            class="cursor-pointer hover:border-2 hover:border-[#007580] rounded-full p-1 transition delay-75">
+                            <span class="iconify text-[24px]" data-icon="mdi:instagram"></span>
+                        </li>
+                        <li
+                            class="cursor-pointer hover:border-2 hover:border-[#007580] rounded-full p-1 transition delay-75">
+                            <span class="iconify text-[24px]" data-icon="mdi:pinterest"></span>
+                        </li>
+                        <li
+                            class="cursor-pointer hover:border-2 hover:border-[#007580] rounded-full p-1 transition delay-75">
+                            <span class="iconify text-[24px]" data-icon="mdi:youtube"></span>
+                        </li>
                     </ul>
                 </div>
                 <div class="category ">
                     <ul class="space-y-5 text-[#272343]">
-                        <li class="cursor-not-allowed text-[#9A9CAA] font-medium uppercase mb-7">Category</li>
+                        <li class="cursor-not-allowed text-[#9A9CAA] font-medium uppercase mb-7">
+                            Category</li>
                         <li><a class="hover:text-[#007580] hover:underline" href="#">Sofa</a></li>
-                        <li><a class="hover:text-[#007580] hover:underline"  href="#">Arm Chair</a></li>
-                        <li><a class="hover:text-[#007580] hover:underline"  href="#">Wing Chair</a></li>
-                        <li><a class="hover:text-[#007580] hover:underline"  href="#">Desk Chair</a></li>
-                        <li><a class="hover:text-[#007580] hover:underline"  href="#">Wooden Chair</a></li>
-                        <li><a class="hover:text-[#007580] hover:underline"  href="#">Park Bench</a></li>
+                        <li><a class="hover:text-[#007580] hover:underline" href="#">Arm Chair</a></li>
+                        <li><a class="hover:text-[#007580] hover:underline" href="#">Wing Chair</a></li>
+                        <li><a class="hover:text-[#007580] hover:underline" href="#">Desk Chair</a></li>
+                        <li><a class="hover:text-[#007580] hover:underline" href="#">Wooden Chair</a>
+                        </li>
+                        <li><a class="hover:text-[#007580] hover:underline" href="#">Park Bench</a></li>
                     </ul>
                 </div>
                 <div class="support">
                     <ul class="space-y-5 text-[#272343]">
-                        <li class="cursor-not-allowed text-[#9A9CAA] font-medium uppercase mb-7">Support</li>
-                        <li><a class="hover:text-[#007580] hover:underline" href="#">Help & Support</a></li>
-                        <li><a class="hover:text-[#007580] hover:underline" href="#">Terms & Conditions</a></li>
-                        <li><a class="hover:text-[#007580] hover:underline" href="#">Privacy Policy</a></li>
+                        <li class="cursor-not-allowed text-[#9A9CAA] font-medium uppercase mb-7">Support
+                        </li>
+                        <li><a class="hover:text-[#007580] hover:underline" href="#">Help & Support</a>
+                        </li>
+                        <li><a class="hover:text-[#007580] hover:underline" href="#">Terms &
+                                Conditions</a></li>
+                        <li><a class="hover:text-[#007580] hover:underline" href="#">Privacy Policy</a>
+                        </li>
                         <li><a class="hover:text-[#007580] hover:underline" href="#">Help</a></li>
                     </ul>
                 </div>
                 <div class="newsletter">
-                    <h3 class="cursor-not-allowed text-[#9A9CAA] font-medium uppercase md:mb-7 ">Newsletter</h3>
+                    <h3 class="cursor-not-allowed text-[#9A9CAA] font-medium uppercase md:mb-7 ">
+                        Newsletter</h3>
                     <form action="">
-                        <input class="w-[285px] p-3 rounded-lg outline-none border-2 border-gray-300" type="text" placeholder="Your Email">
-                        <input class="px-6 py-[14px] bg-[#029FAE] rounded-lg font-semibold text-white hover:shadow-md hover:shadow-gray-400 mt-5 mb-5 cursor-pointer" type="submit" value="Subscribe">
+                        <input class="w-[285px] p-3 rounded-lg outline-none border-2 border-gray-300" type="text"
+                            placeholder="Your Email">
+                        <input
+                            class="px-6 py-[14px] bg-[#029FAE] rounded-lg font-semibold text-white hover:shadow-md hover:shadow-gray-400 mt-5 mb-5 cursor-pointer"
+                            type="submit" value="Subscribe">
                     </form>
-                    <p class="text-[#272343] opacity-60">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt erat enim.</p>
+                    <p class="text-[#272343] opacity-60">Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit. Nullam
+                        tincidunt erat enim.</p>
                 </div>
             </div>
             <div class="end-footer flex justify-between items-center border-t border-t-gray-400 py-6">
-                <h3 class="text-[#9A9CAA]">@ 2021 - Blogy - Designed & Develop by <span class="text-[#272343]">DevMohim</span></h3>
+                <h3 class="text-[#9A9CAA]">@ 2021 - Blogy - Designed & Develop by <span
+                        class="text-[#272343]">DevMohim</span></h3>
                 <img class="opacity-20" src="./img/card.png" alt="">
 
             </div>

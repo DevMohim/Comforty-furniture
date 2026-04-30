@@ -1,136 +1,125 @@
-const list = document.getElementById("ulList");
-const menuBtn = document.getElementById("menuBtn");
-function toogle() {
-  list.classList.toggle("hidden");
+/* Toggle Menu Bar */
+const ulList = document.getElementById("ulList");
+function toggleMenu() {
+  ulList.classList.toggle("hidden");
 }
 
-const cartbox = document.getElementById("cartBox");
-const carts = document.getElementById("carts");
-function toogleCarts() {
-  cartbox.classList.toggle("hidden");
-}
-/* ======================================================
-Add to Cart a item
-====================================================== */
+/* Toogle Cart */
+const cartIcon = document.getElementById("carts");
+const sideCartbtn = document.getElementById("sideCart");
+const cartPage = document.getElementById("cartPage");
+const closeCart = document.getElementById("closeCart");
+const overlay = document.getElementById("overlay");
+const cartQuantity = document.querySelector(".cartQuantity");
+const sideCartQty = document.querySelector("#sideCart h4");
 
-let cart = [];
+cartIcon.addEventListener("click", () => {
+  cartPage.classList.remove("hidden");
+  overlay.classList.remove("hidden");
+});
+sideCartbtn.addEventListener("click", () => {
+  cartPage.classList.remove("hidden");
+  overlay.classList.remove("hidden");
+});
+overlay.addEventListener("click", () => {
+  cartPage.classList.add("hidden");
+  overlay.classList.add("hidden");
+  document.body.style.overflow = "auto";
+});
+closeCart.addEventListener("click", () => {
+  cartPage.classList.add("hidden");
+  overlay.classList.add("hidden");
+  document.body.style.overflow = "auto";
+});
 
-const cartBox = document.getElementById("cartBox");
-const cartBtns = document.querySelectorAll(".cart");
-const cartList = document.getElementById("cartList");
-const totalPriceEl = document.getElementById("totalPrice");
+// Add to Cart
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const carticon = document.querySelectorAll(".cart");
 
-cartBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const name = btn.getAttribute("data-name");
-    const price = Number(btn.getAttribute("data-price"));
+carticon.forEach((btns) => {
+  btns.addEventListener("click", (e) => {
+    const card = e.target.closest(".card");
 
-    addToCart(name, price);
+    const img = card.querySelector("img").src;
+    const name = card.querySelector("h3").innerText;
+    const price = Number(card.querySelector("h4").innerText.replace("$", ""));
 
-    cartBox.classList.remove("hidden");
+    const existingItem = cart.find((item) => item.name === name);
+
+    if (existingItem) {
+      existingItem.quantity++;
+    } else {
+      cart.push({
+        img,
+        name,
+        price,
+        quantity: 1,
+      });
+    }
+    renderCart();
   });
 });
 
-function addToCart(name, price) {
-  // check product already exists
-  const existingItem = cart.find((item) => item.name === name);
-
-  if (existingItem) {
-    existingItem.quantity += 1; // 🔥 quantity বাড়বে
-  } else {
-    cart.push({
-      id: Date.now(),
-      name,
-      price,
-      quantity: 1,
-    });
-  }
-
-  renderCart();
-}
-
 function renderCart() {
-  cartList.innerHTML = "";
+  // Remove Old Item
+  cartPage.querySelectorAll(".box .item, .box .empty-msg")
+    .forEach(el => el.remove());
+
   let total = 0;
+  let totalQty = 0;
 
-  cart.forEach((item) => {
-    const li = document.createElement("li");
-    li.className = "flex justify-between items-center gap-2 mb-2";
-
-    li.innerHTML = `<div>
-        📦 ${item.name} - $${item.price} x ${item.quantity}
-      </div>
-
-      <div class="flex gap-4">
-        <button class="px-2 bg-green-500 text-white rounded" onclick="changeQty(${item.id}, 1)">+</button>
-        <button class="px-2 bg-yellow-500 text-white rounded" onclick="changeQty(${item.id}, -1)">-</button>
-        <button class="px-2 bg-red-500 text-white rounded" onclick="removeItem(${item.id})">x</button>
-      </div>
-  `;
-
-    cartList.appendChild(li);
+  cart.forEach((item, index) => {
     total += item.price * item.quantity;
+    totalQty += item.quantity;
+
+    const div = document.createElement("div");
+    div.className =
+      "item mt-3 flex items-center justify-between bg-slate-300 p-1 rounded-md ";
+
+    div.innerHTML = `
+                  <img class="w-12 rounded-md" src="${item.img}">
+                <h3 class="font-semibold text-[#007085]">${item.name}</h3>
+                <h4 class="font-semibold text-[#007085]">$${item.price}</h4>
+                <div class="buttons bg-slate-300 flex gap-3 items-center p-[2px] ">
+                    <button class="plus bg-[#007085]  px-2 font-bold text-white">+</button>
+                    <span class=" font-semibold">${item.quantity}</span>
+                    <button class="minus bg-[#007085]  px-2 font-bold text-white">-</button>
+                    <button class=" remove bg-[#007085]  px-2 font-bold text-white">x</button>
+                </div>
+  `;
+    cartPage.querySelector('.box').appendChild(div)
+    // Add button Events
+    div.querySelector(".plus").addEventListener("click", () => {
+      item.quantity++;
+      renderCart();
+    });
+    div.querySelector(".minus").addEventListener("click", () => {
+      if (item.quantity > 1) {
+        item.quantity--;
+      } else {
+        cart.splice(index, 1);
+      }
+      renderCart();
+    });
+    div.querySelector(".remove").addEventListener("click", () => {
+      cart.splice(index, 1);
+      renderCart();
+    });
   });
-  totalPriceEl.textContent = total;
-}
-function removeItem(id) {
-  cart = cart.filter((item) => item.id !== id);
-  saveCart();
-  renderCart();
-}
-
-function changeQty(id, delta) {
-  const item = cart.find((i) => i.id === id);
-
-  if (!item) return;
-  item.quantity += delta;
-
-  if (item.quantity <= 0) {
-    removeItem(id);
+  if (cart.length === 0) {
+    const emptyMsg = document.createElement("p");
+    emptyMsg.innerText = "Your Cart is empty";
+    emptyMsg.className = "empty-msg text-white text-center mt-5";
+    cartPage.querySelector('.box').appendChild(emptyMsg);
   }
-  saveCart();
-  renderCart();
-}
+  // Total Update
+  const totalText = cartPage.querySelector(".total h1");
+  totalText.innerText = `
+Total :   $${total}`;
 
-function saveCart() {
+  if (cartQuantity) cartQuantity.innerText = totalQty;
+  if (sideCartQty) sideCartQty.innerText = totalQty;
+
   localStorage.setItem("cart", JSON.stringify(cart));
 }
-
-function loadCart() {
-  const data = localStorage.getItem("cart");
-
-  if (data) {
-    cart = JSON.parse(data);
-  }
-}
-
-loadCart();
 renderCart();
-// function addToCart(name, price) {
-//   /*add to cart array */
-//   cart.push({ name, price });
-
-//   /* update total price */
-//   total += price;
-
-//   /* update ui */
-//   renderCart();
-// }
-
-// function renderCart() {
-//   const cartList = document.getElementById("cartList");
-//   const totalPrice = document.getElementById("totalPrice");
-
-//   /*clear previous item */
-//   cartList.innerHTML = "";
-
-//   /* Show item */
-//   cart.forEach((item) => {
-//     const li = document.createElement("li");
-//     li.textContent = `${item.name} --- ${item.price}`;
-
-//     cartList.appendChild(li);
-//   });
-
-//   textContent.textContent = total;
-// }
